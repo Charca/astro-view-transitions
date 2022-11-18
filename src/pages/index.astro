@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro'
+import data from '../data.json'
+---
+
+<Layout title="Welcome to Astro.">
+  <div class="stack-wrap">
+    <div class="stack">
+      <div class="stack__item stack__item--empty"></div>
+      {
+        data.map((photo) => (
+          <a
+            href={`/photo/${photo.id}`}
+            class="stack__item"
+            style={`
+              background-image: url(/img/${photo.id}.jpg);
+              view-transition-name: photo-${photo.id};
+              contain: layout;
+            `}
+            id={`photo-${photo.id}`}
+            aria-label={`${photo.title1} ${photo.title2}`}
+          />
+        ))
+      }
+      <div class="stack__item stack__item--empty"></div>
+    </div>
+  </div>
+
+  <div class="title">
+    <h2 class="title__main oh">
+      <span class="oh__inner">Photography</span>
+    </h2>
+    <span class="title__sub oh"
+      ><span class="oh__inner">1986 &mdash; 2022</span>
+    </span>
+  </div>
+</Layout>
+
+<style>
+  ::view-transition-new(photo-6) {
+    object-fit: cover;
+  }
+
+  ::view-transition-old(photo-6) {
+    object-fit: contain;
+  }
+</style>

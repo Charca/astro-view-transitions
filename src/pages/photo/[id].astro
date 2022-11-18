@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import data from '../../data.json'
+
+const id = Astro.params.id
+const photo = data.find((d) => d.id === Number(id))
+
+if (!photo) {
+  return new Response(null, {
+    status: 404,
+    statusText: 'Not found',
+  })
+}
+
+const photos = [
+  Number(id) - 2,
+  Number(id) - 1,
+  Number(id),
+  Number(id) + 1,
+  Number(id) + 2,
+]
+
+function isOutOfBounds(id: number) {
+  return id < 1 || id > data.length
+}
+---
+
+<Layout title="Welcome to Astro." overflowHidden>
+  <div class="content content--open">
+    <div class="content__item content__item--current">
+      <h2 class="content__item-title">
+        <span class="oh"
+          ><span class="oh__inner">{photo.title1}</span>
+        </span><span class="oh"
+          ><span class="oh__inner">{photo.title2}</span>
+        </span>
+      </h2>
+      <div class="content__item-description">
+        <p class="oh"><strong class="oh__inner">{photo.subtitle}</strong></p>
+        <p class="oh">
+          <span class="oh__inner">{photo.description}</span>
+        </p>
+      </div>
+    </div>
+    <nav class="content__nav-wrap">
+      <a
+        class={`content__nav content__nav--prev unbutton`}
+        href={`/photo/${photos[1]}`}
+        style={isOutOfBounds(photos[1]) ? 'visibility: hidden;' : ''}
+      >
+        <svg width="100" height="267" viewBox="0 0 100 267">
+          <>
+            <path d="M49.894 2.766v262.979" stroke-linecap="square"></path>
+            <path
+              fill="none"
+              d="M99.75 76.596C73.902 76.596 52.62 43.07 49.895 0 47.168 43.07 25.886 76.596.036 76.596"
+            ></path>
+          </>
+        </svg>
+      </a>
+
+      <a
+        class="content__nav content__nav--next unbutton"
+        href={`/photo/${photos[3]}`}
+        style={isOutOfBounds(photos[3]) ? 'visibility: hidden;' : ''}
+      >
+        <svg width="100" height="267" viewBox="0 0 100 267">
+          <>
+            <path d="M49.894 2.766v262.979" stroke-linecap="square"></path>
+            <path
+              fill="none"
+              d="M99.75 76.596C73.902 76.596 52.62 43.07 49.895 0 47.168 43.07 25.886 76.596.036 76.596"
+            ></path>
+          </>
+        </svg>
+      </a>
+    </nav>
+  </div>
+  <div class="slides">
+    <div class="stack" style="transform: translate(0px, -80vh);">
+      {
+        photos.map((photoId) => {
+          if (isOutOfBounds(photoId)) {
+            return <div class="stack__item stack__item--empty" />
+          }
+
+          return (
+            <div
+              class={`stack__item ${
+                photoId === Number(id) ? 'stack__item--current' : ''
+              }`}
+              style={`
+                background-image:url(/img/${photoId}.jpg);
+                view-transition-name: photo-${photoId};
+                contain: layout;
+              `}
+              id={`photo-${photoId}`}
+            />
+          )
+        })
+      }
+    </div>
+  </div>
+</Layout>
+
+<style>
+  ::view-transition-old(photo-6) {
+    object-fit: cover;
+  }
+
+  ::view-transition-new(photo-6) {
+    object-fit: contain;
+  }
+</style>
