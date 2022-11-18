@@ -453,31 +453,3 @@ a:focus-visible {
     opacity: 1;
   }
 }
-
-::view-transition-new(photo-6),
-::view-transition-old(photo-6) {
-  /* animation: none; */
-  mix-blend-mode: normal;
-  height: 100%;
-  overflow: clip;
-}
-
-/*
-::view-transition-new(photo-6),
-::view-transition-old(photo-6) {
-  animation: none;
-  mix-blend-mode: normal;
-  height: 100%;
-  overflow: clip;
-} */
-
-/* ::view-transition-new(root),
-::view-transition-old(root) {
-  animation-duration: 3s;
-} */
-
-/*
-::view-transition-old(root) {
-  animation-duration: .3s;
-  animation-name: _slide-and-fade-to-left_qh3tq_1
-} */
