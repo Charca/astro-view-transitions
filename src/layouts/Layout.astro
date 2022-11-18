@@ -1,6 +1,4 @@
 ---
-import '../css/base.css'
-
 export interface Props {
   title: string
   overflowHidden?: boolean
@@ -27,6 +25,7 @@ const { title, overflowHidden = false } = Astro.props
       content="stack, layout transition, menu, gallery, gsap, javascript"
     />
     <meta name="author" content="Codrops" />
+    <link rel="stylesheet" href="/css/base.css" />
   </head>
   <body class={overflowHidden ? 'oh' : ''}>
     <main>
