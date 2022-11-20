@@ -8,12 +8,23 @@ const { title, overflowHidden = false } = Astro.props
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <!-- TODO -->
+    <meta
+      name="description"
+      content="An experimental layout transition where a stack of images animates to a gallery view, showing some more content."
+    />
+    <meta
+      name="keywords"
+      content="stack, layout transition, menu, gallery, gsap, javascript"
+    />
+    <meta name="author" content="Codrops" />
     <link rel="stylesheet" href="/css/base.css" />
   </head>
   <body class={overflowHidden ? 'oh' : ''}>
