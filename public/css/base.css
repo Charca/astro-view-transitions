@@ -347,6 +347,7 @@ a:focus-visible {
   align-self: center;
   pointer-events: none;
   height: calc((100vh - var(--slide-height) - var(--slide-gap) * 4) / 3);
+  padding: 0 2em;
 }
 
 .content__nav svg {
