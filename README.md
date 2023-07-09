@@ -3,7 +3,7 @@
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Charca/astro-view-transitions)
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/Charca/astro-view-transitions)
 
-To try out this project, make sure to enable the *experimental* View Transitions API flag in Google Chrome. Based on the original Codrops experiment by [Mary Lou]https://twitter.com/crnacura).
+To try out this project, make sure to enable the *experimental* View Transitions API flag in Google Chrome. Based on the original Codrops experiment by [Mary Lou](https://twitter.com/crnacura).
 
 
 ## 🧞 Commands
